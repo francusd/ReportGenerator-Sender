@@ -1,9 +1,15 @@
 # ReportExtractor&Generator&Sender
 
-## El siguiente projecto fue desarrollado en función de cumplir con la operativa diaria de genera ciertos reportes gerenciales y posterior, su envio por correo electronico.
-- 1. Scripts para extraer datos desde BD.
-- 2. Scripts generador de reporte.
-- 3. Scripts para enviar correo.
+## El siguiente proyecto fue desarrollado en función de cumplir con la operativa diaria de generar ciertos reportes gerenciales y posterior, su envio por correo electronico.
+-  Scripts para extraer datos desde BD.
+-  Scripts generador de reporte.
+-  Scripts para enviar correo.
      
-**Projecto desarrollado en Python**
+**Tecnología usada: **
+- Python
+- Microsoft SQL Server
+- Pandas
+- Numpy
+- Smtplib
+- Pyodbc
 `code`
