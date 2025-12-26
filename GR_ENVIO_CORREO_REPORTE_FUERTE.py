@@ -15,10 +15,6 @@ formatted_yesterday = yesterday.strftime('%Y-%m-%d')
 context = ssl.create_default_context()
 context.set_ciphers('HIGH:!DH:!aNULL')
 
-
-#correos
-
-
 # ===============================
 # 2- Helper functions
 # ===============================
@@ -78,10 +74,10 @@ def build_html_table(df, title):
 
 html_intro = f"""
 <h5 style="font-family:Arial; 
-color:#004080;">REPORTE GERENCIAL DIARIO DE VENTAS FUERTE: CENTROS </h5>
+color:#004080;">REPORTE GERENCIAL DIARIO DE VENTAS xxx: CENTROS </h5>
 <p style="font-family:Arial; font-size:10px;">
 Buen día a todos,<br>
-Ventas Diarias <strong>FUERTE CENTRO</strong>, acumuladas al corte: 
+Ventas Diarias <strong>xxx CENTRO</strong>, acumuladas al corte: 
 <strong>{formatted_yesterday}</strong><br><br>
 Este Reporte considera las categorias de 'COMESTIBLE','AUTOMOTRIZ','COLCHONES','ELECTRO','FERRETERIA HARDWARE',
         'NO COMESTIBLE','PERECEDERO','PROMOCION Y ACTIVIDADES' y 'ARBOLITOS NATURALES'<br><br>
@@ -94,17 +90,14 @@ html_centro = build_html_table(df, "Ventas FUERTE - CENTROS")
 # Combine everything
 html_full = html_intro + html_centro 
 
-# Save for verification (optional)
-#Path("reporte_ventas.html").write_text(html_full, encoding="utf-8")
-
 # ===============================
 # 4- Send email
 # ===============================
 
 msg = MIMEMultipart('alternative')
-msg['Subject'] = "📈 REPORTE GERENCIAL DIARIO DE VENTAS FUERTE"
-msg['From'] = "alertabi@elfuerte.com.pa"
-recipients =["moises@gruporaphael.com","hakan.ozaltin@gruporaphael.com","nberk@gruporaphael.com","david@gruporaphael.com","caner.ozaltin@gruporaphael.com","rafi@gruporaphael.com","jacobo.dahan@gruporaphael.com","jonathan@gruporaphael.com","morris@gruporaphael.com","alberto.ilarslan@gruporaphael.com","yosi@gruporaphael.com","michael@gruporaphael.com","ralph@gruporaphael.com","yasar.halfon@gruporaphael.com","rodolfo.watson@gruporaphael.com","marco@gruporaphael.com","pindaro.brandao@gruporaphael.com","joseph.kabasso@gruporaphael.com","edgar.gonzalez@gruporaphael.com","giovanny.perez@gruporaphael.com","francisco.tudisco@gruporaphael.com","leyda.quiel@gruporaphael.com","mariangel.centella@gruporaphael.com","leonel.jimenez@gruporaphael.com"]
+msg['Subject'] = "📈 REPORTE GERENCIAL DIARIO DE VENTAS xxxx"
+msg['From'] = "alertabi@corporativo.com.pa"
+recipients =["email@corporativo.com"]
 #
 msg.attach(MIMEText(html_full, 'html'))
 
@@ -117,9 +110,10 @@ context.set_ciphers('HIGH:!DH:!aNULL')
 with smtplib.SMTP(smtp_server, smtp_port) as server:    
     server.ehlo()
     server.starttls(context=context)
-    server.login("PruebasInternasFree", "Gruporaphael2021")
+    server.login("PruebasInternasFree", "xxxx")
     server.sendmail(msg['From'], recipients, msg.as_string())
 
 print("✅ Email sent successfully!")
+
 
         
