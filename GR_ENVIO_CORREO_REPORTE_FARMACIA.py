@@ -12,8 +12,6 @@ df_onda_centro = df_onda_centro.loc[:, ~df_onda_centro.columns.str.contains('^Un
 df_onda_depa=pd.read_excel('C:\DevProjects\DATASETS\REPORTE_GERENCIAL_VENTAS_FARMACIA_SUBCATEGORIA.xlsx')
 df_onda_depa = df_onda_depa.loc[:, ~df_onda_depa.columns.str.contains('^Unnamed')]
 
-
-#print(f'DATAFRAME\n Reporte Gerencial de Ventas FUERTE: Categoria de Perecedero\n {df_perecedero.head()}')
 html_table = df_onda_centro.to_html(index=False, border=3)
 html_table_sub=df_onda_depa.to_html(index=False, border=3)
 
@@ -106,8 +104,8 @@ html_full = html_intro + html_centro + html_depa
 
 msg = MIMEMultipart('alternative')
 msg['Subject'] = "📈 REPORTE GERENCIAL DIARIO DE VENTAS FARMACIA: CENTROS & DEPARTAMENTO"
-msg['From'] = "alertabi@elfuerte.com.pa"
-recipients = ["moises@gruporaphael.com","hakan.ozaltin@gruporaphael.com","david@gruporaphael.com","caner.ozaltin@gruporaphael.com","rafi@gruporaphael.com","jacobo.dahan@gruporaphael.com","jonathan@gruporaphael.com","morris@gruporaphael.com","alberto.ilarslan@gruporaphael.com","yosi@gruporaphael.com","michael@gruporaphael.com","ralph@gruporaphael.com","yasar.halfon@gruporaphael.com","rodolfo.watson@gruporaphael.com","marco@gruporaphael.com","pindaro.brandao@gruporaphael.com","joseph.kabasso@gruporaphael.com","edgar.gonzalez@gruporaphael.com","giovanny.perez@gruporaphael.com","francisco.tudisco@gruporaphael.com","leyda.quiel@gruporaphael.com","mariangel.centella@gruporaphael.com","leonel.jimenez@gruporaphael.com"]
+msg['From'] = "alertabi@corporativo.com.pa"
+recipients = ["email@corporativo.com"]
 msg['To'] = ", ".join(recipients)
 msg.attach(MIMEText(html_full, 'html'))
 
@@ -120,8 +118,9 @@ context.set_ciphers('HIGH:!DH:!aNULL')
 with smtplib.SMTP(smtp_server, smtp_port) as server:    
     server.ehlo()
     server.starttls(context=context)
-    server.login("PruebasInternasFree", "Gruporaphael2021")
+    server.login("PruebasInternasFree", "xxxxx")
     server.sendmail(msg['From'], recipients, msg.as_string())
 
 print("✅ Email sent successfully!")
+
 
