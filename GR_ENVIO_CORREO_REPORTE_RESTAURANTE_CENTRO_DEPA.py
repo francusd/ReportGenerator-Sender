@@ -93,17 +93,14 @@ html_depa = build_html_table(df_onda_depa, "Ventas RESTAURANTE - SUBCATEGORIA")
 # Combine everything
 html_full = html_intro + html_centro + html_depa 
 
-# Save for verification (optional)
-#Path("reporte_ventas.html").write_text(html_full, encoding="utf-8")
-
 # ===============================
 # 4- Send email
 # ===============================
 
 msg = MIMEMultipart('alternative')
 msg['Subject'] = "📈 REPORTE GERENCIAL DIARIO DE VENTAS RESTAURANTE"
-msg['From'] = "alertabi@elfuerte.com.pa"
-recipients = ["moises@gruporaphael.com","hakan.ozaltin@gruporaphael.com","david@gruporaphael.com","caner.ozaltin@gruporaphael.com","rafi@gruporaphael.com","jacobo.dahan@gruporaphael.com","jonathan@gruporaphael.com","morris@gruporaphael.com","alberto.ilarslan@gruporaphael.com","yosi@gruporaphael.com","michael@gruporaphael.com","ralph@gruporaphael.com","yasar.halfon@gruporaphael.com","rodolfo.watson@gruporaphael.com","marco@gruporaphael.com","pindaro.brandao@gruporaphael.com","joseph.kabasso@gruporaphael.com","edgar.gonzalez@gruporaphael.com","giovanny.perez@gruporaphael.com","francisco.tudisco@gruporaphael.com","leyda.quiel@gruporaphael.com","mariangel.centella@gruporaphael.com","leonel.jimenez@gruporaphael.com"]
+msg['From'] = "alertabi@corpporativo.com.pa"
+recipients = ["email@corporativo.com"]
 msg['To'] = ", ".join(recipients)
 msg.attach(MIMEText(html_full, 'html'))
 
@@ -116,8 +113,9 @@ context.set_ciphers('HIGH:!DH:!aNULL')
 with smtplib.SMTP(smtp_server, smtp_port) as server:    
     server.ehlo()
     server.starttls(context=context)
-    server.login("PruebasInternasFree", "Gruporaphael2021")
+    server.login("PruebasInternasFree", "xxxx")
     server.sendmail(msg['From'], recipients, msg.as_string())
 
 print("✅ Email sent successfully!")
+
 
