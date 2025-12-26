@@ -83,7 +83,7 @@ def build_html_table(df, title):
 
 html_intro = f"""
 <h5 style="font-family:Arial; 
-color:#004080;">REPORTE GERENCIAL DIARIO DE VENTAS LA ONDA</h5>
+color:#004080;">REPORTE GERENCIAL DIARIO DE VENTAS YYYY</h5>
 <p style="font-family:Arial; font-size:10px;">
 Buen día a todos,<br>
 Ventas Diarias La ONDA <strong>CENTRO, CATEGORIA, y COMPRADORES</strong> acumuladas al corte: 
@@ -92,25 +92,21 @@ Ventas Diarias La ONDA <strong>CENTRO, CATEGORIA, y COMPRADORES</strong> acumula
 """
 
 # Create both tables
-html_centro = build_html_table(df_onda_centro, "Ventas LA ONDA - CENTROS")
-html_depa = build_html_table(df_onda_depa, "Ventas LA ONDA - SUBCATEGORIA")
-html_comprador=build_html_table(df_onda_comprador, "Ventas LA ONDA - COMPRADORES")
+html_centro = build_html_table(df_onda_centro, "Ventas YYYY - CENTROS")
+html_depa = build_html_table(df_onda_depa, "Ventas YYYY - SUBCATEGORIA")
+html_comprador=build_html_table(df_onda_comprador, "Ventas YYYY - COMPRADORES")
 
 # Combine everything
 html_full = html_intro + html_centro + html_depa + html_comprador
-
-# Save for verification (optional)
-#Path("reporte_ventas.html").write_text(html_full, encoding="utf-8")
-
 # ===============================
 # 4- Send email
 # ===============================
 
 msg = MIMEMultipart('alternative')
-msg['Subject'] = "📈 REPORTE GERENCIAL DIARIO DE VENTAS LA ONDA"
-msg['From'] = "alertabi@elfuerte.com.pa"
-recipients = ["abraham@gruporaphael.com", "andres.paredes@gruporaphael.com","diego.thau@gruporaphael.com", "luis.pacheco@gruporaphael.com", "horacio.perigault@gruporaphael.com","melissa.madrid@gruporaphael.com","mario.smith@gruporaphael.com","carlo.smith@gruporaphael.com","elvis.elias@gruporaphael.com","omer.avital@gruporaphael.com","bryan.neiman@gruporaphael.com","ehud.bottaro@gruporaphael.com","gabriel.homsany@gruporaphael.com","isaac.zebede@gruporaphael.com","roberto.benaim@gruporaphael.com","daddhiatt.irimia@gruporaphael.com","rodolfo.watson@gruporaphael.com","rrenteria@gruporaphael.com","juan.arosemena@gruporaphael.com","rafi@gruporaphael.com","pindaro.brandao@gruporaphael.com","leyda.quiel@gruporaphael.com","francisco.tudisco@gruporaphael.com","mariangel.centella@gruporaphael.com"]
-#"francisco.tudisco@gruporaphael.com"]
+msg['Subject'] = "📈 REPORTE GERENCIAL DIARIO DE VENTAS YYYY"
+msg['From'] = "alertabi@corporativo.com.pa"
+recipients = ["email@corporativo.com"]
+
 msg['To'] = ", ".join(recipients)
 msg.attach(MIMEText(html_full, 'html'))
 
@@ -123,8 +119,9 @@ context.set_ciphers('HIGH:!DH:!aNULL')
 with smtplib.SMTP(smtp_server, smtp_port) as server:    
     server.ehlo()
     server.starttls(context=context)
-    server.login("PruebasInternasFree", "Gruporaphael2021")
+    server.login("PruebasInternasFree", "xxxx")
     server.sendmail(msg['From'], recipients, msg.as_string())
 
 print("✅ Email sent successfully!")
+
 
