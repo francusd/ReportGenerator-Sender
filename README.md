@@ -1,9 +1,12 @@
 # ReportExtractor&Generator&Sender
 
-## El siguiente proyecto fue desarrollado en función de cumplir con la operativa diaria de generar ciertos reportes gerenciales y posterior, su envio por correo electronico.
--  Scripts para extraer datos desde BD.
+## Este proyecto fue desarrollado en función de cumplir con la operativa diaria de generar ciertos reportes gerenciales y posterior, su envio por correo electronico.
+## enfocados en el comparativo de rendimientos del grupo de empresas retails: hipermercados, tiendas, restaurantes y farmacias. 
+
+-  Scripts ETL para extraer datos desde BD.
 -  Scripts generador de reporte.
 -  Scripts para enviar correo.
+-  Script de Batch para automizacion.
      
 **Tecnología usada: **
 - Python
@@ -12,4 +15,5 @@
 - Numpy
 - Smtplib
 - Pyodbc
+- SMTP
 `code`
