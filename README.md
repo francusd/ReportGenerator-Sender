@@ -8,7 +8,8 @@ Enfocados en el comparativo de rendimientos del grupo de empresas retails: hiper
 -  Scripts para enviar correo.
 -  Script de Batch para automizacion.
      
-**Tecnología usada: **
+**Tecnología usada: ***
+
 - Python
 - Microsoft SQL Server
 - Pandas
@@ -16,4 +17,3 @@ Enfocados en el comparativo de rendimientos del grupo de empresas retails: hiper
 - Smtplib
 - Pyodbc
 - SMTP
-`code`
